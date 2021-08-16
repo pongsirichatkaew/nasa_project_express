@@ -29,7 +29,7 @@ console.log(result)
 
 function loadPlanetsData() {
   return new Promise((resolve, reject) => {
-    fs.createReadStream(    
+    fs.createReadStream(
       path.join(__dirname, '..', '..', 'data', 'kepler_data.csv')
     )
       .pipe(
@@ -55,7 +55,11 @@ function loadPlanetsData() {
   });
 }
 
+function getAllplanets() {
+  return habitablePlanets;
+}
+
 module.exports = {
   loadPlanetsData,
-  planets: habitablePlanets,
+  getAllplanets,
 };
