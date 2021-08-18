@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const MONGO_URL = `mongodb+srv://nasa-api:aTtBLFsBlhEJH9tN@nasacluster.mqs5v.mongodb.net/nasa?retryWrites=true&w=majority`;
+const MONGO_URL = `${process.env.MONGO_URL}`;
 
 // once => trigger event will trigger once
 mongoose.connection.once('open', () => {
