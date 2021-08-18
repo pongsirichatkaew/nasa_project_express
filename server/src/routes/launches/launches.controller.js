@@ -5,12 +5,16 @@ const {
   abortLaunchById,
 } = require('../../models/launches.model');
 
+const { getPagination } = require('../../services/query');
+
 async function httpGetAllLaunches(req, res) {
   // can iterate with Map values()
   // for(const value of launches.values()){}
 
   //   Array.from to turn to Arrays
-  return res.status(200).json(Array.from(await getAllLaunches()));
+  const { skip, limit } = getPagination(req.query);
+  const launches = await getAllLaunches(skip, limit);
+  return res.status(200).json(launches);
 }
 
 async function httpAddNewLaunch(req, res) {
